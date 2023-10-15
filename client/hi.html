@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서버 만들어보기</title>
+</head>
+<body>
+    <button onclick="getData()">서버에서 가져오기</button>
+    <p id="dataDisplay">여기에 표시될 거임.</p>
+
+    <script>
+        async function getData() {
+            try {
+                const response = await fetch('http://localhost:19032/hi');
+                const data = await response.json();
+                document.getElementById('dataDisplay').innerText = data.message;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
